@@ -1,130 +1,176 @@
-# Kitchen PNL Analysis & Dashboard
+# Kitchen PNL Analytics Dashboard
 
-## Project Objective
+## Project Overview
 
-The objective of this project was to analyze kitchen-level Profit & Loss (PNL) data for a cloud kitchen company and build interactive dashboards to understand operational and financial performance across stores, cities, and revenue cohorts.
+This project focuses on analyzing Profit & Loss (PNL) data for a cloud kitchen business across multiple cities, stores, and revenue cohorts.
 
-The analysis focuses on:
+The objective was to perform:
+- Data cleaning and preprocessing
+- Exploratory Data Analysis (EDA)
+- Feature engineering
+- Business KPI analysis
+- Interactive dashboard development
+
+The final solution was developed using Python, Pandas, Plotly, and Streamlit.
+
+---
+
+# Business Problem
+
+The dataset contains kitchen-level operational and financial metrics such as:
+- Revenue
+- Gross Margin
+- EBITDA
+- Order Count
+- Discounts
+- Food Cost
+- Variance (food wastage)
+
+The goal was to analyze:
+- Kitchen profitability
 - Revenue trends
-- EBITDA performance
-- Gross Margin analysis
-- Variance (food wastage) analysis
-- Kitchen-level profitability
-- Revenue cohort comparisons
+- Operational efficiency
+- Variance impact on EBITDA
+- Revenue cohort behavior
 
 ---
 
 # Tools & Technologies Used
 
-- Python
-- Pandas
-- Streamlit
-- Plotly
-- Jupyter Notebook
-- VS Code
+| Category | Tools |
+|---|---|
+| Programming | Python |
+| Data Analysis | Pandas |
+| Visualization | Plotly |
+| Dashboarding | Streamlit |
+| Notebook Environment | Jupyter Notebook |
+| IDE | VS Code |
 
 ---
 
 # Project Workflow
 
-## Step 1 — Data Understanding
+## 1. Data Cleaning & Preprocessing
 
-The raw Excel dataset was explored to understand:
-- Kitchen/store-level financial metrics
-- Revenue and profitability structure
-- Variance (food wastage) behavior
-- Monthly trends across cities
+Data cleaning was performed in Jupyter Notebook.
 
----
+Key preprocessing steps:
+- Fixed column headers
+- Standardized date formatting
+- Corrected data types
+- Created derived metrics
+- Structured cohort categories
 
-## Step 2 — Data Cleaning & Preprocessing
-
-Data cleaning was performed in Jupyter Notebook:
-- Fixed column names
-- Standardized date formats
-- Removed inconsistencies
-- Converted numerical columns into correct data types
-
-Additional calculated metrics were created:
-- GM Percentage
-- EBITDA Percentage
-- Variance Percentage
+Additional metrics created:
+- GM_PERCENT
+- EBITDA_PERCENT
+- VARIANCE_PERCENT
 
 ---
 
-## Step 3 — Feature Engineering
+## 2. Feature Engineering
 
-Business-focused cohorts and buckets were created:
-- Revenue Buckets
-- Variance Buckets
-- EBITDA Status Categories
+Business-oriented categories and buckets were created for analysis.
 
-These features were used for dashboard filtering and business analysis.
+### Revenue Buckets
+Revenue was segmented into fixed cohorts using NET_REVENUE ranges.
+
+### Variance Buckets
+Variance percentages were grouped into:
+- Var <2%
+- Var 2-3%
+- Var 3-5%
+
+### EBITDA Status
+Stores were classified into:
+- High Profit
+- Moderate Profit
+- Low Profit
+- Loss Making
 
 ---
 
-## Step 4 — Exploratory Data Analysis (EDA)
+## 3. Exploratory Data Analysis
 
 EDA was performed to identify:
 - Monthly revenue trends
-- EBITDA patterns
+- EBITDA trends
 - Top-performing kitchens
 - Variance impact on profitability
-- Revenue cohort behavior
-
-Key insights were documented in the notebook.
+- Revenue cohort performance
+- City-wise operational behavior
 
 ---
 
-## Step 5 — Streamlit Dashboard Development
+# Dashboard Development
 
-The cleaned dataset was exported as:
-- cleaned_kitchen_pnl.csv
+The cleaned dataset was exported and used inside a Streamlit dashboard application.
 
-The dashboard was developed in VS Code using Streamlit and Plotly.
+Two dashboard sections were developed.
 
-Two dashboard sections were created:
+---
 
-### Dashboard 1 — Kitchen Level PNL
-Includes:
-- KPI cards
-- Revenue trends
-- EBITDA trends
-- Top kitchen analysis
-- Revenue vs EBITDA analysis
-- Interactive filters
+## Dashboard 1 — Kitchen Level PNL
 
-### Dashboard 2 — Variance Level PNL
-Includes:
-- Variance vs EBITDA analysis
-- Revenue cohort variance matrix
-- Store count matrix
-- Business insights section
+### Features
+- KPI Cards
+- Monthly Revenue Trend
+- Monthly EBITDA Trend
+- Top Performing Kitchens
+- Revenue vs EBITDA Analysis
+- Interactive Filters
+- Filtered Dataset Preview
+
+### Filters Used
+- City
+- Month
+- Variance Bucket
+
+---
+
+## Dashboard 2 — Variance Level PNL
+
+### Features
+- EBITDA % by Variance Bucket
+- Revenue Cohort Variance Matrix
+- Store Count Matrix
+- Business Insights Section
+
+### Objective
+This dashboard focuses on understanding how food wastage variance impacts operational profitability.
 
 ---
 
 # Performance Optimization
 
-To improve dashboard performance:
-- Streamlit caching (`@st.cache_data`) was used
-- Large datasets displayed were limited using `.head()`
-- Aggregated views were used for chart rendering
+To improve dashboard responsiveness:
+- Streamlit caching (`@st.cache_data`) was implemented
+- Aggregated visualizations were used
+- Large table rendering was reduced using `.head()`
+
+---
+
+# Key Business Insights
+
+- Kitchens with lower variance percentages consistently achieve stronger EBITDA margins.
+- Higher revenue kitchens demonstrate better operational efficiency.
+- Variance control appears strongly correlated with profitability improvement.
+- Significant profitability differences exist across cities and revenue cohorts.
 
 ---
 
 # Project Structure
 
 ```text
-Rebel_Foods_Assignment/
-│
-├── Kitchen_PNL_Analysis.ipynb
+Kitchen-PNL-Analytics/
 │
 ├── README.md
+├── Kitchen_PNL_Analysis.ipynb
+├── Kittchen PNL Data.xlsx
 │
-├── Dashboard/
+├── dashboard/
 │   ├── app.py
 │   ├── cleaned_kitchen_pnl.csv
-│   ├── requirements.txt
+│   └── requirements.txt
 │
-└── Original_Data/
-    └── Kittchen PNL Data.xlsx
+└── screenshots/
